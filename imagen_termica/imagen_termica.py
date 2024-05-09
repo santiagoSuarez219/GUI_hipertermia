@@ -3,7 +3,7 @@ from PySide6.QtCore import QThread, Signal
 from comunicacion_serial.comunicion_serial import comunicacion_serial
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg
 from matplotlib.figure import Figure
-from matplotlib.patches import Rectangle
+from matplotlib.widgets import RectangleSelector
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -23,11 +23,12 @@ class ImagenTermica(QThread):
 
     def actualizar_datos(self):
         self.data_imagen_termica = self.comunicacion_serial.leer()
-        maxima = np.max(self.data_imagen_termica)
         self.grafica.actualizar_graficas(self.data_imagen_termica)
-        minima = np.min(self.data_imagen_termica)
-        promedio = np.mean(self.data_imagen_termica)
-        self.actualizar_labels_signal.emit(maxima, minima, promedio)
+        if self.data_imagen_termica is not None:
+            maxima = np.max(self.data_imagen_termica)
+            minima = np.min(self.data_imagen_termica)
+            promedio = np.mean(self.data_imagen_termica)
+            self.actualizar_labels_signal.emit(maxima, minima, promedio)
 
 class Grafica(FigureCanvasQTAgg):
     # actualizar_temperatura_signal = pyqtSignal(float)
@@ -38,47 +39,26 @@ class Grafica(FigureCanvasQTAgg):
         self.g1 = figura.add_subplot(111)
         self.data_imagen_termica = np.zeros((24, 32))
         self.area_seleccionada = None
-        self.x0 = 0
-        self.y0 = 0
-        self.x1 = 0
-        self.y1 = 0
-        self.selector_rectangular = None
-        self.isSelecting = False
+        self.RS = RectangleSelector(self.g1, self.line_select_callback, useblit=True,
+                                    button=[1], minspanx=5, minspany=5, spancoords='pixels',
+                                    interactive=True)
 
-        self.figure.canvas.mpl_connect('button_press_event', self.on_press)
-        self.figure.canvas.mpl_connect('button_release_event', self.on_release)
-        # self.figure.canvas.mpl_connect('motion_notify_event', self.on_motion)
     
-    def on_press(self, event):
-        self.isSelecting = True
-        self.x0 = event.xdata
-        self.y0 = event.ydata
-        self.selector_rectangular = None
-    
-    def on_release(self, event):
-        self.x1 = event.xdata
-        self.y1 = event.ydata
-        self.isSelecting = False
-        
-    # def on_motion(self, event):
-    #     if self.isSelecting:
-    #         self.x1 = event.xdata
-    #         self.y1 = event.ydata
-    #         if self.selector_rectangular:
-    #             self.selector_rectangular.remove()
-    #         self.selector_rectangular = Rectangle((self.x0, self.y0), self.x1 - self.x0, self.y1 - self.y0, edgecolor='black', facecolor='none')
-    #         self.g1.add_patch(self.selector_rectangular)
-    #         self.draw()
+    def line_select_callback(self, eclick, erelease):
+        """
+        Callback for line selection.
+
+        *eclick* and *erelease* are the press and release events.
+        """
+        x1, y1 = eclick.xdata, eclick.ydata
+        x2, y2 = erelease.xdata, erelease.ydata
+        self.area_seleccionada = self.data_imagen_termica[int(y1):int(y2), int(x1):int(x2)]
+        if self.area_seleccionada is not None:
+            print(f"Temperatura promedio en el área seleccionada: {np.mean(self.area_seleccionada)}")
 
     def actualizar_graficas(self, data_g1):
         self.data_imagen_termica = data_g1
         self.g1.clear()
-        if self.x0 != 0 and self.y0 != 0 and self.x1 != 0 and self.y1 != 0 and not self.isSelecting:
-            x_min, x_max = sorted([int(round(self.x0)), int(round(self.x1))])
-            y_min, y_max = sorted([int(round(self.y0)), int(round(self.y1))])   
-            self.area_seleccionada = self.data_imagen_termica[int(y_min):int(y_max), int(x_min):int(x_max)]
-            self.selector_rectangular = Rectangle((x_min, y_min), x_max - x_min, y_max - y_min, edgecolor='red', facecolor='none')
-            self.g1.add_patch(self.selector_rectangular)
-            print(f"Temperatura promedio en el area seleccionada: {np.mean(self.area_seleccionada)}")
-        self.g1.imshow(data_g1, cmap='jet')
+        if data_g1 is not None:
+            self.g1.imshow(data_g1, cmap='jet')
         self.draw()
