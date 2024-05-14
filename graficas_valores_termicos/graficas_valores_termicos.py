@@ -26,7 +26,20 @@ class AdquisionValoresTermicos(QThread):
         if len(self.data_minima_temperatura) == 200:
             self.data_minima_temperatura.pop(0)
 
-        self.grafica.actualizar_graficas(self.data_maxima_temperatura, self.data_minima_temperatura)
+        self.actualizar_graficas(self.data_maxima_temperatura, self.data_minima_temperatura)
+
+    def actualizar_graficas(self, data1, data2):
+        self.grafica.g.clear()
+        self.grafica.g2.clear()
+        self.grafica.g.plot(data1, '-o')
+        self.grafica.g2.plot(data2, '-o')
+        self.grafica.g.set_title("Temperatura maxima")
+        self.grafica.g2.set_title("Temperatura minima")
+        self.grafica.g.set_xlabel("Muestra")
+        self.grafica.g2.set_xlabel("Muestra")
+        self.grafica.g.set_ylabel("Temperatura (°C)")
+        self.grafica.g2.set_ylabel("Temperatura (°C)")
+        self.grafica.draw()
 
 
 class GraficaValoresTermicos(FigureCanvasQTAgg):
@@ -37,17 +50,4 @@ class GraficaValoresTermicos(FigureCanvasQTAgg):
         self.g.grid()
         self.g2 = figura.add_subplot(212)
         self.g2.grid()
-        
-        
-    def actualizar_graficas(self, data1, data2):
-        self.g.clear()
-        self.g2.clear()
-        self.g.plot(data1, '-o')
-        self.g2.plot(data2, '-o')
-        self.g.set_title("Temperatura maxima")
-        self.g2.set_title("Temperatura minima")
-        self.g.set_xlabel("Muestra")
-        self.g2.set_xlabel("Muestra")
-        self.g.set_ylabel("Temperatura (°C)")
-        self.g2.set_ylabel("Temperatura (°C)")
-        self.draw()
+    

@@ -1,10 +1,12 @@
-import serial
+from PySide6.QtCore import QThread
 from serial.tools import list_ports
-import json
 import numpy as np
+import serial
+import json
 
-class comunicacion_serial():
+class comunicacion_serial(QThread):
     def __init__(self, vid, pid, baudrate):
+        super(comunicacion_serial, self).__init__()
         self.vid = vid
         self.pid = pid
         self.puerto = None
@@ -17,6 +19,9 @@ class comunicacion_serial():
             if puerto.vid == self.vid and puerto.pid == self.pid:
                 self.puerto = puerto.device
                 print("Puerto encontrado: ", self.puerto)
+    
+    def run(self):
+        pass
 
     def conectar(self):
         self.encontrar_puerto_sensor()

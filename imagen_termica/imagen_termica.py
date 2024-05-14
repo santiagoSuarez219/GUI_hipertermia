@@ -13,8 +13,10 @@ class ImagenTermica(QThread):
         super(ImagenTermica, self).__init__() 
         self.grafica = grafica
         self.comunicacion_serial = comunicacion_serial(vid=0x1A86, pid=0x7523, baudrate=115200)
+        self.comunicacion_serial.start()
         self.comunicacion_serial.conectar()
         self.data_imagen_termica = self.comunicacion_serial.leer()
+        self.maxima_temperatura_actual = 0
 
     def run(self):
         while True:
@@ -23,12 +25,20 @@ class ImagenTermica(QThread):
 
     def actualizar_datos(self):
         self.data_imagen_termica = self.comunicacion_serial.leer()
-        self.grafica.actualizar_graficas(self.data_imagen_termica)
+        self.actualizar_graficas()
         if self.data_imagen_termica is not None:
             maxima = np.max(self.data_imagen_termica)
             minima = np.min(self.data_imagen_termica)
             promedio = np.mean(self.data_imagen_termica)
+            self.maxima_temperatura_actual = maxima
             self.actualizar_labels_signal.emit(maxima, minima, promedio)
+    
+    def actualizar_graficas(self):
+        self.grafica.g1.clear()
+        if self.data_imagen_termica is not None:
+            self.grafica.g1.imshow(self.data_imagen_termica, cmap='jet')
+        self.grafica.draw()
+
 
 class Grafica(FigureCanvasQTAgg):
     # actualizar_temperatura_signal = pyqtSignal(float)
@@ -56,9 +66,3 @@ class Grafica(FigureCanvasQTAgg):
         if self.area_seleccionada is not None:
             print(f"Temperatura promedio en el área seleccionada: {np.mean(self.area_seleccionada)}")
 
-    def actualizar_graficas(self, data_g1):
-        self.data_imagen_termica = data_g1
-        self.g1.clear()
-        if data_g1 is not None:
-            self.g1.imshow(data_g1, cmap='jet')
-        self.draw()

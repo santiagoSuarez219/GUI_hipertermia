@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'mainwindowQHRwTI.ui'
+## Form generated from reading UI file 'mainwindowpPztUE.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -36,7 +36,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2 = QHBoxLayout(self.widget)
         self.horizontalLayout_2.setSpacing(0)
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
-        self.horizontalLayout_2.setContentsMargins(0, 0, 0, -1)
+        self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.widget_2 = QWidget(self.widget)
         self.widget_2.setObjectName(u"widget_2")
         self.widget_2.setMaximumSize(QSize(800, 16777215))
@@ -45,6 +45,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
         self.verticalLayout_4.setContentsMargins(0, 0, 0, 0)
         self.imagen_termica_layout = QVBoxLayout()
+        self.imagen_termica_layout.setSpacing(0)
         self.imagen_termica_layout.setObjectName(u"imagen_termica_layout")
 
         self.verticalLayout_4.addLayout(self.imagen_termica_layout)
@@ -86,18 +87,18 @@ class Ui_MainWindow(object):
         self.horizontalLayout.addWidget(self.line_2)
 
         self.verticalLayout = QVBoxLayout()
-        self.verticalLayout.setSpacing(8)
+        self.verticalLayout.setSpacing(4)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.verticalLayout.setContentsMargins(-1, -1, 16, -1)
-        self.label = QLabel(self.centralwidget)
-        self.label.setObjectName(u"label")
+        self.parametros_termicos_label = QLabel(self.centralwidget)
+        self.parametros_termicos_label.setObjectName(u"parametros_termicos_label")
         font = QFont()
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(QFont.Bold)
-        self.label.setFont(font)
+        self.parametros_termicos_label.setFont(font)
 
-        self.verticalLayout.addWidget(self.label)
+        self.verticalLayout.addWidget(self.parametros_termicos_label)
 
         self.temperatura_maxima = QLabel(self.centralwidget)
         self.temperatura_maxima.setObjectName(u"temperatura_maxima")
@@ -144,95 +145,133 @@ class Ui_MainWindow(object):
 
         self.verticalLayout.addWidget(self.line)
 
-        self.label_2 = QLabel(self.centralwidget)
-        self.label_2.setObjectName(u"label_2")
-        self.label_2.setFont(font)
+        self.control_temperatura_label = QLabel(self.centralwidget)
+        self.control_temperatura_label.setObjectName(u"control_temperatura_label")
+        self.control_temperatura_label.setFont(font)
 
-        self.verticalLayout.addWidget(self.label_2)
+        self.verticalLayout.addWidget(self.control_temperatura_label)
 
-        self.label_3 = QLabel(self.centralwidget)
-        self.label_3.setObjectName(u"label_3")
-        self.label_3.setFont(font1)
+        self.horizontalLayout_4 = QHBoxLayout()
+        self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
+        self.toggleControl = QRadioButton(self.centralwidget)
+        self.toggleControl.setObjectName(u"toggleControl")
 
-        self.verticalLayout.addWidget(self.label_3)
+        self.horizontalLayout_4.addWidget(self.toggleControl)
 
-        self.spinBox = QSpinBox(self.centralwidget)
-        self.spinBox.setObjectName(u"spinBox")
+        self.toogleLazoAbierto = QRadioButton(self.centralwidget)
+        self.toogleLazoAbierto.setObjectName(u"toogleLazoAbierto")
 
-        self.verticalLayout.addWidget(self.spinBox)
+        self.horizontalLayout_4.addWidget(self.toogleLazoAbierto)
 
-        self.label_4 = QLabel(self.centralwidget)
-        self.label_4.setObjectName(u"label_4")
-        self.label_4.setFont(font1)
 
-        self.verticalLayout.addWidget(self.label_4)
+        self.verticalLayout.addLayout(self.horizontalLayout_4)
 
-        self.spinBox_2 = QSpinBox(self.centralwidget)
-        self.spinBox_2.setObjectName(u"spinBox_2")
+        self.actuador_label = QLabel(self.centralwidget)
+        self.actuador_label.setObjectName(u"actuador_label")
 
-        self.verticalLayout.addWidget(self.spinBox_2)
+        self.verticalLayout.addWidget(self.actuador_label)
+
+        self.horizontalLayout_7 = QHBoxLayout()
+        self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
+        self.actuado_value = QSpinBox(self.centralwidget)
+        self.actuado_value.setObjectName(u"actuado_value")
+
+        self.horizontalLayout_7.addWidget(self.actuado_value)
+
+        self.actuador_value_send = QPushButton(self.centralwidget)
+        self.actuador_value_send.setObjectName(u"actuador_value_send")
+
+        self.horizontalLayout_7.addWidget(self.actuador_value_send)
+
+
+        self.verticalLayout.addLayout(self.horizontalLayout_7)
+
+        self.temperatura_maxima_deseada_label = QLabel(self.centralwidget)
+        self.temperatura_maxima_deseada_label.setObjectName(u"temperatura_maxima_deseada_label")
+        self.temperatura_maxima_deseada_label.setFont(font1)
+
+        self.verticalLayout.addWidget(self.temperatura_maxima_deseada_label)
+
+        self.temperatura_maxima_deseada_value = QSpinBox(self.centralwidget)
+        self.temperatura_maxima_deseada_value.setObjectName(u"temperatura_maxima_deseada_value")
+
+        self.verticalLayout.addWidget(self.temperatura_maxima_deseada_value)
+
+        self.temperatura_minima_deseada_label = QLabel(self.centralwidget)
+        self.temperatura_minima_deseada_label.setObjectName(u"temperatura_minima_deseada_label")
+        self.temperatura_minima_deseada_label.setFont(font1)
+
+        self.verticalLayout.addWidget(self.temperatura_minima_deseada_label)
+
+        self.tempertatura_minima_deseada_value = QSpinBox(self.centralwidget)
+        self.tempertatura_minima_deseada_value.setObjectName(u"tempertatura_minima_deseada_value")
+
+        self.verticalLayout.addWidget(self.tempertatura_minima_deseada_value)
 
         self.horizontalLayout_6 = QHBoxLayout()
         self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
-        self.label_7 = QLabel(self.centralwidget)
-        self.label_7.setObjectName(u"label_7")
-        self.label_7.setFont(font1)
+        self.control_P_label = QLabel(self.centralwidget)
+        self.control_P_label.setObjectName(u"control_P_label")
+        self.control_P_label.setFont(font1)
 
-        self.horizontalLayout_6.addWidget(self.label_7)
+        self.horizontalLayout_6.addWidget(self.control_P_label)
 
-        self.doubleSpinBox_3 = QDoubleSpinBox(self.centralwidget)
-        self.doubleSpinBox_3.setObjectName(u"doubleSpinBox_3")
+        self.control_P_value = QDoubleSpinBox(self.centralwidget)
+        self.control_P_value.setObjectName(u"control_P_value")
 
-        self.horizontalLayout_6.addWidget(self.doubleSpinBox_3)
+        self.horizontalLayout_6.addWidget(self.control_P_value)
 
 
         self.verticalLayout.addLayout(self.horizontalLayout_6)
 
         self.horizontalLayout_5 = QHBoxLayout()
         self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
-        self.label_6 = QLabel(self.centralwidget)
-        self.label_6.setObjectName(u"label_6")
-        self.label_6.setFont(font1)
+        self.control_I_label = QLabel(self.centralwidget)
+        self.control_I_label.setObjectName(u"control_I_label")
+        self.control_I_label.setFont(font1)
 
-        self.horizontalLayout_5.addWidget(self.label_6)
+        self.horizontalLayout_5.addWidget(self.control_I_label)
 
-        self.doubleSpinBox_2 = QDoubleSpinBox(self.centralwidget)
-        self.doubleSpinBox_2.setObjectName(u"doubleSpinBox_2")
+        self.control_I_value = QDoubleSpinBox(self.centralwidget)
+        self.control_I_value.setObjectName(u"control_I_value")
 
-        self.horizontalLayout_5.addWidget(self.doubleSpinBox_2)
+        self.horizontalLayout_5.addWidget(self.control_I_value)
 
 
         self.verticalLayout.addLayout(self.horizontalLayout_5)
 
         self.horizontalLayout_3 = QHBoxLayout()
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
-        self.label_5 = QLabel(self.centralwidget)
-        self.label_5.setObjectName(u"label_5")
-        self.label_5.setFont(font1)
+        self.control_D_label = QLabel(self.centralwidget)
+        self.control_D_label.setObjectName(u"control_D_label")
+        self.control_D_label.setFont(font1)
 
-        self.horizontalLayout_3.addWidget(self.label_5)
+        self.horizontalLayout_3.addWidget(self.control_D_label)
 
-        self.doubleSpinBox = QDoubleSpinBox(self.centralwidget)
-        self.doubleSpinBox.setObjectName(u"doubleSpinBox")
+        self.control_D_value = QDoubleSpinBox(self.centralwidget)
+        self.control_D_value.setObjectName(u"control_D_value")
 
-        self.horizontalLayout_3.addWidget(self.doubleSpinBox)
+        self.horizontalLayout_3.addWidget(self.control_D_value)
 
 
         self.verticalLayout.addLayout(self.horizontalLayout_3)
 
-        self.pushButton = QPushButton(self.centralwidget)
-        self.pushButton.setObjectName(u"pushButton")
+        self.send_button = QPushButton(self.centralwidget)
+        self.send_button.setObjectName(u"send_button")
 
-        self.verticalLayout.addWidget(self.pushButton)
+        self.verticalLayout.addWidget(self.send_button)
 
-        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+        self.line_3 = QFrame(self.centralwidget)
+        self.line_3.setObjectName(u"line_3")
+        self.line_3.setFrameShape(QFrame.HLine)
+        self.line_3.setFrameShadow(QFrame.Sunken)
 
-        self.verticalLayout.addItem(self.verticalSpacer)
+        self.verticalLayout.addWidget(self.line_3)
 
-        self.radioButton = QRadioButton(self.centralwidget)
-        self.radioButton.setObjectName(u"radioButton")
+        self.toogleCSV = QRadioButton(self.centralwidget)
+        self.toogleCSV.setObjectName(u"toogleCSV")
 
-        self.verticalLayout.addWidget(self.radioButton)
+        self.verticalLayout.addWidget(self.toogleCSV)
 
 
         self.horizontalLayout.addLayout(self.verticalLayout)
@@ -253,20 +292,24 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"Aplicativo Hipertermia", None))
-        self.label.setText(QCoreApplication.translate("MainWindow", u"Parametros termicos", None))
+        self.parametros_termicos_label.setText(QCoreApplication.translate("MainWindow", u"Parametros termicos", None))
         self.temperatura_maxima.setText(QCoreApplication.translate("MainWindow", u"Temperatura maxima:", None))
         self.temperatura_maxima_value.setText(QCoreApplication.translate("MainWindow", u"43 \u00b0C", None))
         self.temperatura_minima.setText(QCoreApplication.translate("MainWindow", u"Temperatura minima:", None))
         self.temperatura_minima_value.setText(QCoreApplication.translate("MainWindow", u"30 \u00b0C", None))
         self.temperatura_promedio.setText(QCoreApplication.translate("MainWindow", u"Temperatura promedio", None))
         self.temperatura_promedio_value.setText(QCoreApplication.translate("MainWindow", u"35 \u00b0C", None))
-        self.label_2.setText(QCoreApplication.translate("MainWindow", u"Control de temperatura", None))
-        self.label_3.setText(QCoreApplication.translate("MainWindow", u"Temperatura maxima deseada", None))
-        self.label_4.setText(QCoreApplication.translate("MainWindow", u"Temperatura minima deseada", None))
-        self.label_7.setText(QCoreApplication.translate("MainWindow", u"P", None))
-        self.label_6.setText(QCoreApplication.translate("MainWindow", u"I", None))
-        self.label_5.setText(QCoreApplication.translate("MainWindow", u"D", None))
-        self.pushButton.setText(QCoreApplication.translate("MainWindow", u"Enviar", None))
-        self.radioButton.setText(QCoreApplication.translate("MainWindow", u"Tomar datos CSV", None))
+        self.control_temperatura_label.setText(QCoreApplication.translate("MainWindow", u"Control de temperatura", None))
+        self.toggleControl.setText(QCoreApplication.translate("MainWindow", u"Control", None))
+        self.toogleLazoAbierto.setText(QCoreApplication.translate("MainWindow", u"Lazo Abierto", None))
+        self.actuador_label.setText(QCoreApplication.translate("MainWindow", u"Actuador", None))
+        self.actuador_value_send.setText(QCoreApplication.translate("MainWindow", u"Enviar", None))
+        self.temperatura_maxima_deseada_label.setText(QCoreApplication.translate("MainWindow", u"Temperatura maxima deseada", None))
+        self.temperatura_minima_deseada_label.setText(QCoreApplication.translate("MainWindow", u"Temperatura minima deseada", None))
+        self.control_P_label.setText(QCoreApplication.translate("MainWindow", u"P", None))
+        self.control_I_label.setText(QCoreApplication.translate("MainWindow", u"I", None))
+        self.control_D_label.setText(QCoreApplication.translate("MainWindow", u"D", None))
+        self.send_button.setText(QCoreApplication.translate("MainWindow", u"Enviar", None))
+        self.toogleCSV.setText(QCoreApplication.translate("MainWindow", u"Tomar datos CSV", None))
     # retranslateUi
 

@@ -11,26 +11,126 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Aplicativo Hipertermia</string>
+  </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget {
+	background-color: white;
+}</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
-     <layout class="QVBoxLayout" name="verticalLayout_2">
-      <item>
-       <spacer name="verticalSpacer_2">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>40</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-     </layout>
+     <widget class="QWidget" name="widget" native="true">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QWidget" name="widget_2" native="true">
+         <property name="maximumSize">
+          <size>
+           <width>800</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_4">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item>
+           <layout class="QVBoxLayout" name="imagen_termica_layout">
+            <property name="spacing">
+             <number>0</number>
+            </property>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QWidget" name="widget_3" native="true">
+         <property name="maximumSize">
+          <size>
+           <width>300</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_2">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item>
+           <widget class="QWidget" name="widget_4" native="true">
+            <layout class="QVBoxLayout" name="verticalLayout_7">
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <layout class="QVBoxLayout" name="maxima_temperatura_layout"/>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
     </item>
     <item>
      <widget class="Line" name="line_2">
@@ -42,13 +142,13 @@
     <item>
      <layout class="QVBoxLayout" name="verticalLayout">
       <property name="spacing">
-       <number>8</number>
+       <number>4</number>
       </property>
       <property name="rightMargin">
        <number>16</number>
       </property>
       <item>
-       <widget class="QLabel" name="label">
+       <widget class="QLabel" name="parametros_termicos_label">
         <property name="font">
          <font>
           <pointsize>12</pointsize>
@@ -141,7 +241,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_2">
+       <widget class="QLabel" name="control_temperatura_label">
         <property name="font">
          <font>
           <pointsize>12</pointsize>
@@ -155,7 +255,46 @@
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_3">
+       <layout class="QHBoxLayout" name="horizontalLayout_4">
+        <item>
+         <widget class="QRadioButton" name="toggleControl">
+          <property name="text">
+           <string>Control</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="toogleLazoAbierto">
+          <property name="text">
+           <string>Lazo Abierto</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QLabel" name="actuador_label">
+        <property name="text">
+         <string>Actuador</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_7">
+        <item>
+         <widget class="QSpinBox" name="actuado_value"/>
+        </item>
+        <item>
+         <widget class="QPushButton" name="actuador_value_send">
+          <property name="text">
+           <string>Enviar</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QLabel" name="temperatura_maxima_deseada_label">
         <property name="font">
          <font>
           <pointsize>10</pointsize>
@@ -167,10 +306,10 @@
        </widget>
       </item>
       <item>
-       <widget class="QSpinBox" name="spinBox"/>
+       <widget class="QSpinBox" name="temperatura_maxima_deseada_value"/>
       </item>
       <item>
-       <widget class="QLabel" name="label_4">
+       <widget class="QLabel" name="temperatura_minima_deseada_label">
         <property name="font">
          <font>
           <pointsize>10</pointsize>
@@ -182,12 +321,12 @@
        </widget>
       </item>
       <item>
-       <widget class="QSpinBox" name="spinBox_2"/>
+       <widget class="QSpinBox" name="tempertatura_minima_deseada_value"/>
       </item>
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_6">
         <item>
-         <widget class="QLabel" name="label_7">
+         <widget class="QLabel" name="control_P_label">
           <property name="font">
            <font>
             <pointsize>10</pointsize>
@@ -199,14 +338,14 @@
          </widget>
         </item>
         <item>
-         <widget class="QDoubleSpinBox" name="doubleSpinBox_3"/>
+         <widget class="QDoubleSpinBox" name="control_P_value"/>
         </item>
        </layout>
       </item>
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_5">
         <item>
-         <widget class="QLabel" name="label_6">
+         <widget class="QLabel" name="control_I_label">
           <property name="font">
            <font>
             <pointsize>10</pointsize>
@@ -218,14 +357,14 @@
          </widget>
         </item>
         <item>
-         <widget class="QDoubleSpinBox" name="doubleSpinBox_2"/>
+         <widget class="QDoubleSpinBox" name="control_I_value"/>
         </item>
        </layout>
       </item>
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_3">
         <item>
-         <widget class="QLabel" name="label_5">
+         <widget class="QLabel" name="control_D_label">
           <property name="font">
            <font>
             <pointsize>10</pointsize>
@@ -237,32 +376,26 @@
          </widget>
         </item>
         <item>
-         <widget class="QDoubleSpinBox" name="doubleSpinBox"/>
+         <widget class="QDoubleSpinBox" name="control_D_value"/>
         </item>
        </layout>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton">
+       <widget class="QPushButton" name="send_button">
         <property name="text">
          <string>Enviar</string>
         </property>
        </widget>
       </item>
       <item>
-       <spacer name="verticalSpacer">
+       <widget class="Line" name="line_3">
         <property name="orientation">
-         <enum>Qt::Vertical</enum>
+         <enum>Qt::Horizontal</enum>
         </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>40</height>
-         </size>
-        </property>
-       </spacer>
+       </widget>
       </item>
       <item>
-       <widget class="QRadioButton" name="radioButton">
+       <widget class="QRadioButton" name="toogleCSV">
         <property name="text">
          <string>Tomar datos CSV</string>
         </property>
